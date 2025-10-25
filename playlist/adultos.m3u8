@@ -1,0 +1,11 @@
+#EXTM3U
+#EXTINF:-1 tvg-logo="https://imgur.com/9lWh5bb.png" group-title="Canais | INFANTIL",ADULT SWIM HD
+http://7semfronteiras.cc:8080/julia3387/jpc374856/64647
+#EXTINF:-1 tvg-logo="https://imgur.com/9lWh5bb.png" group-title="Canais | INFANTIL",ADULT SWIM FHD
+http://7semfronteiras.cc:8080/julia3387/jpc374856/160018
+#EXTINF:-1 tvg-logo="https://imgur.com/ShOT5Xg.png" group-title="Canais | ABERTO",Rede UTV
+https://utvcdn.acessaradios.com.br/utvcdn/utvcdn.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Adult Swim HD°" tvg-logo="https://pt.wikipedia.org/wiki/Adult_Swim#/media/Ficheiro:Adult_Swim_2001.png" group-title="INFANTIL",Adult Swim HD°
+http://iron.cshunter.site:80/Formigatv/63716693/2128181
+#EXTINF:-1 tvg-id="" tvg-name="Adult Swim SD°" tvg-logo="https://pt.wikipedia.org/wiki/Adult_Swim#/media/Ficheiro:Adult_Swim_2001.png" group-title="INFANTIL",Adult Swim SD°
+http://iron.cshunter.site:80/Formigatv/63716693/3091833
