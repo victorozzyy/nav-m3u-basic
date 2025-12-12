@@ -1,68 +1,84 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-	<script src="js/inde.js" defer></script>
-	<title>Player</title>
-    <style>
-        
-    </style>
+  <meta charset="utf-8"/>
+  <title>Player</title>
+  <link rel="stylesheet" href="css/stylem3u8.css">
+ 
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
-    <div class="container" id="mainContainer">
-        <h1>🎬 Player</h1>
-        
-       <div class="button-container">
-            <button class="btn btn-m3u8 focusable" data-index="01" onclick="showChannelSelection()">📺 Canais Fixos</button>
-	        <!--<button class="btn btn-m3u8 focusable" data-index="02" onclick="window.location.href = 'm3u8.html'">🎬 M3U8 Player</button>-->
-            <button class="btn btn-m3u8 focusable" data-index="03" onclick="window.open('https://multicanais.casino/', '_blank')">🌐 Multicanais</button>
-            
-            <button class="btn btn-external focusable" data-index="04" onclick="loadExternalSite('https://embedcanaistv.com/', '📺 Embed Canais TV')">📺 Embed Canais TV</button>
-	       <button class="btn btn-external focusable" data-index="05" onclick="loadExternalSite('https://embedmax.site/', '📺 Embedmax')">📺 Embedmax</button>
-        </div>
+  <h2>🎬Player</h2>
 
-        <div class="button-container">
-    <button class="btn btn-external focusable" data-index="06" onclick="loadExternalSite('https://redecanaistv.gd/', '📺 Rede Canais TV')">📺 Rede Canais TV</button>
-    <button class="btn btn-external focusable" data-index="07" onclick="loadExternalSite('https://www.embedtv.net/', '⚽Embedtv/')">⚽ Futebol Play HD</button>
-    <button class="btn btn-external focusable" data-index="08" onclick="loadExternalSite('https://embedtv.digital/', '⚽Embedtv/')">⚽ Embedtv</button>
-    <button class="btn btn-external focusable" data-index="09" onclick="loadExternalSite('https://nossoplayeronlinehd.blog/', '🌐 Nosso Player Online')">🌐 Nosso Player Online</button>
-    <button class="btn btn-hide focusable" data-index="10" onclick="refreshApp()">🔄 Atualizar</button>
-    <button class="btn btn-m3u8 focusable" data-index="11" onclick="window.location.href = 'm3u8.html'">🎬 M3U8 Player</button>
-</div>
-
-    </div>
-
-    <!-- Container para sites externos -->
-    <div class="external-site-container" id="externalSiteContainer">
-        <div class="external-site-header">
-            <div class="external-site-title" id="externalSiteTitle">Carregando...</div>
-            <div class="external-site-controls" id="externalSiteControls">
-                <button class="control-btn focusable" data-index="1" onclick="reloadExternalSite()">🔄 Recarregar</button>
-                <button class="control-btn focusable" data-index="2" onclick="goBackHome()">🏠 Voltar</button>
-                <button class="control-btn focusable" data-index="3" onclick="toggleFullscreenSite()">⛶ Tela Cheia</button>
-            </div>
-        </div>
-        
-        <div class="loading-indicator" id="loadingIndicator">
-            <div class="spinner"></div>
-            <div>Carregando site...</div>
-        </div>
-        
-        <iframe class="external-site-frame" id="externalSiteFrame"></iframe>
-    </div>
-
-    <!-- Status -->
-    <div class="status" id="status"></div>
+  <div class="section" style="display:flex; flex-wrap: wrap; gap: 10px;">
+   <button class="navigable" id="btnMinhasListas" tabindex="0">🔥 Listas</button>
+   
+   <!-- 
+	  <button class="navigable" id="btnLoadPlaylist" tabindex="0">📡 Playlists Remotas</button>
+   <button class="navigable" id="btnUpload" tabindex="0">📤 Upload Arquivo</button>
+   <button class="navigable" id="btnLocal" tabindex="0">📁 Playlists Locais</button>
+    <button class="navigable" id="btnSingle" tabindex="0">🔗 Canal Único</button>
+    -->
     
-    <!-- Navigation Help -->
-    <div class="navigation-help">
-        🎮 Use ⬅️➡️⬆️⬇️ para navegar • ⭕ OK para selecionar • 🔙 Voltar
-    </div>
+    
+  </div>
 
-    <script>
+  <div class="section" id="remotePlaylistSelector" style="display:none; margin-top:10px;">
+    <h3>📡 Playlists Remotas Disponíveis:</h3>
+    <ul id="remotePlaylistList"></ul>
+    <button class="navigable" id="btnBackFromRemote" style="margin-top:10px;">⬅️ Voltar</button>
+  </div>
+
+  <div class="section" id="playlistSelector" style="display:none; margin-top:10px;">
+    <h3>📂 Playlists Locais:</h3>
+    <ul id="playlistList"></ul>
+    <button class="navigable" id="btnBackFromLocal" style="margin-top:10px;">⬅️ Voltar</button>
+  </div>
+
+  <div class="section">
+    <label>📺 Canais:</label>
+    <ul id="channelList"></ul>
+  </div>
+
+  <div id="messageArea"></div>
+
+  <!-- Scripts modulares - ORDEM IMPORTANTE! -->
+  <script src="js/state.js"></script>
+  <script src="js/state-manager.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/channels.js"></script>
+  <script src="js/playlists.js"></script>
+  <script src="js/FilterModule.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+        // Log de verificação de carregamento
+        console.log('╔══════════════════════════════════════╗');
+        console.log('📦 VERIFICAÇÃO DE MÓDULOS CARREGADOS');
+        console.log('╚══════════════════════════════════════╝');
         
+        const modules = {
+            'PlaylistConfig': typeof PlaylistConfig !== 'undefined',
+            'AppState': typeof AppState !== 'undefined',
+            'StateManager': typeof StateManager !== 'undefined',
+            'DocumentsManager': typeof DocumentsManager !== 'undefined',
+            'ChannelModule': typeof ChannelModule !== 'undefined',
+            'PlaylistModule': typeof PlaylistModule !== 'undefined',
+            'NavigationModule': typeof NavigationModule !== 'undefined',
+            'InlinePlayerModule': typeof InlinePlayerModule !== 'undefined',
+            'PlayerModule': typeof PlayerModule !== 'undefined',
+            'SearchModule': typeof SearchModule !== 'undefined'
+        };
+        
+        Object.entries(modules).forEach(([name, loaded]) => {
+            console.log(`${loaded ? '✅' : '❌'} ${name}`);
+        });
+        
+        const allLoaded = Object.values(modules).every(v => v);
+        console.log(allLoaded ? '✅ Todos os módulos carregados!' : '❌ Alguns módulos faltando!');
+        console.log('╚══════════════════════════════════════╝');
     </script>
 </body>
 </html>
