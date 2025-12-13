@@ -2,10 +2,11 @@
 
 const FilterModule = {
     // Palavras proibidas (tudo minúsculo)
-    blockedWords: [
-        
-        ""
-    ],
+    /*blockedWords: [
+        "porno", "porn",
+        "adulto", "adultos", "adult", "adults",
+        "+18", "18+", "xxx", ""
+    ],*/
 
     // Extensões que serão aceitas
     allowedExtensions: [
