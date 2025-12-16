@@ -17,11 +17,103 @@ const PlaylistModule = {
     currentProxyIndex: 0,
     
     // Configurações de playlists remotas
+    remotePlaylistsConfig: [
+        {
+        name: "🎬 Canais",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/canais24h.m3u8",
+        category: "Filmes"
+      },
+	  
+	  {
+        name: "🎬 Filmes1 ",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/playlist_mp4_part1.m3u",
+        category: "Mp4"
+      },
+      {
+        name: "🎬 Series1 ",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/seriesmp4.m3u8",
+        category: "Mp4"
+      },
+      {
+        name: "🎬 Filmes e Series",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/filmes-series.m3u8",
+        category: "Mp4"
+      },{
+        name: "🎬 Filmes e Series2",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/playlist_filmes_series.m3u",
+        category: "Filmes e Series"
+      },
+      {
+        name: "🎬 Series2 mp4",
+        description: "Big sequencia, series boas.",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists2/series2-mp4.m3u8",
+        category: "Mp4"
+      },{
+        name: "🎬 Series3 mp4",
+        description: "Rancho, Dexter, Suits, Justfield",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists2/series3-mp4.m3u8",
+        category: "Mp4"
+      },{
+        name: "🎬 Filmes2 mp4",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists2/filmes2-mp4.m3u8",
+        category: "Mp4"
+      },{
+        name: "🎬 Canais2 mp4",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/canais2.m3u8",
+        category: "Mp4"
+      },
+	  {
+        name: "🎬 Mp4 1",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/playlist_mp4_part1.m3u",
+        category: "Mp4"
+      },{
+        name: "🎬 Mp4 2",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/playlist_mp4_part2.m3u",
+        category: "Mp4"
+      },
+	  /* Atualizar essas playlists*/
+	  {
+        name: "🎬 Mp4 3",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/playlist_mp4_part3.m3u",
+        category: "Filmes"
+      },
+	  {
+        name: "🎬 Mp4 4",
+        description: "Canais variados de alta qualidade",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/playlist_mp4_part4.m3u",
+        category: "Filmes"
+      },
+	  
+      
+
+	  {
+        name: "👶 Desenhos",
+        description: "Conteúdo seguro para crianças",
+        url: "https://raw.githubusercontent.com/victorozzyy/m3uplayer-web/refs/heads/main/playlists/playlist_desenhos.m3u",
+        category: "Infantil"
+      }
+    ],
     
+     // Playlists locais
+    availablePlaylists: [
+        { name: "Lista 01", filename: "lista01.m3u8" },
+       
+        { name: "Lista 02", filename: "lista02.m3u" }
+    ],
     
     // Minhas Listas (personalizadas) - COM MARCAÇÃO CORS
     minhasListasConfig: [
-        {
+       {
             name: "🔥 Lista 01",
             description: "Lista 04",
             url: "https://felas87dz.icu/get.php?username=854191413&password=383942274&type=m3u_plus",
@@ -748,8 +840,6 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 console.log('✅ PlaylistModule carregado (v3.0 - com suporte CORS)');
-
-
 
 
 
